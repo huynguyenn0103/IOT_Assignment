@@ -1,12 +1,11 @@
 import { View, StyleSheet, Text, Pressable, Image } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
-import Button from '../component/Button';
 import { useContext } from 'react';
 import { AppContext } from '../store/context';
-function UserScreen({route, navigation}) {
+function LoginScreen() {
   const data = useContext(AppContext)
-  const logout = () =>{
-    data.setLogin(false);
+  const login = () =>{
+    data.setLogin(true)
   }
   return (
     <View style={styles.rootContainer}>
@@ -18,16 +17,16 @@ function UserScreen({route, navigation}) {
         onLoad={() => {}}
       />
       <View style={styles.wrapper}>
-        <Pressable style={styles.element} onPress={logout}>
+        <Pressable style={styles.element} onPress={login}>
           <Ionicons name="exit-outline" color="#d81515" size={20}/>
-          <Text> Sign out </Text>
+          <Text> Sign in </Text>
         </Pressable>
       </View>
     </View>
   );
 }
 
-export default UserScreen;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
   rootContainer: {

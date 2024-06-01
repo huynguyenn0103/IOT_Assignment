@@ -14,6 +14,7 @@ export const AppContext = createContext({
     setPumpIn: (value) => {},
     setPumpOut: (value) => {},
     setCreatedAt: (value) => {},
+    setLogin: (value) => {}
 })
 
 const AppContextProvider = ({children}) => {
