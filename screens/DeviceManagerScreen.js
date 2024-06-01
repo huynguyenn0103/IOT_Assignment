@@ -137,6 +137,7 @@ function DeviceManagerScreen({ route, navigation }) {
               }}
               value={false}
               style={styles.switch}
+              disabled
             />
           </View>
         </View>

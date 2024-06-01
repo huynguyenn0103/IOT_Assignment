@@ -63,13 +63,26 @@ export const getTempChart = async () => {
   const response = await axios.get(ADAFRUIT_DATA_TEMP_URL);
   const arrays = response.data;
   arrays.sort((a,b) => new Date(a.created_at) - new Date(b.created_at))
-  const temps = arrays.map((item) => {
-    return {
-      value: +item.value,
-      label: new Date(item.created_at).toLocaleString(),
-    };
-  });
-  return temps;
+  // const temps = arrays.map((item) => {
+  //   return {
+  //     value: +item.value,
+  //     label: new Date(item.created_at).toLocaleString(),
+  //   };
+  // });
+  let results = {
+    labels: [],
+    datasets: [
+      {
+        data: [],
+      },
+    ],
+  }
+  const len = arrays.length;
+  for(let i = 5; i >= 0; i--){
+    results.labels.push(new Date(arrays[len - 1 - i].created_at).toLocaleTimeString())
+    results.datasets[0].data.push(+arrays[len - 1 - i].value)
+  }
+  return results;
 };
 
 export const getLatestTemp = async () => {
@@ -86,13 +99,20 @@ export const getHumiChart = async () => {
     const response = await axios.get(ADAFRUIT_DATA_HUMI_URL);
     const arrays = response.data;
     arrays.sort((a,b) => new Date(a.created_at) - new Date(b.created_at))
-    const humis = arrays.map((item) => {
-    return {
-      value: +item.value,
-      label: new Date(item.created_at).toLocaleString(),
-    };
-  });
-  return humis;
+    let results = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+        },
+      ],
+    }
+    const len = arrays.length;
+    for(let i = 5; i >= 0; i--){
+      results.labels.push(new Date(arrays[len - 1 - i].created_at).toLocaleTimeString())
+      results.datasets[0].data.push(+arrays[len - 1 - i].value)
+    }
+    return results;
 };
 
 export const getLatestHumi = async () => {

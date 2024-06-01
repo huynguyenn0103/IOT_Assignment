@@ -128,7 +128,7 @@ function SchedulerScreen({ route, navigation }) {
             }
         } else return item;
     }))
-    Toast.info("Change Scheduler Status Successfully")
+    Toast.success("Change Scheduler Status Successfully")
   }
   function updateInputValueHandler(inputType, enteredValue, selectedDate) {
     switch (inputType) {
@@ -314,12 +314,10 @@ function SchedulerScreen({ route, navigation }) {
 
                   <View style={styles.action}>
                     <Button onPress={addSchedulerModal} color="#c30b64">
-                      {" "}
-                      Add{" "}
+                      Add
                     </Button>
                     <Button onPress={cancelSchedulerModal} color="#888787">
-                      {" "}
-                      Cancel{" "}
+                      Cancel
                     </Button>
                   </View>
                 </View>

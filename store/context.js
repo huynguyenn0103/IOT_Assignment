@@ -6,13 +6,14 @@ export const AppContext = createContext({
     mixer3: false,
     pumpIn: false,
     pumpOut: false,
+    login: false,
     createdAt: new Date(),
     setMixer1: (value) => {},
     setMixer2: (value) => {},
     setMixer3: (value) => {},
     setPumpIn: (value) => {},
     setPumpOut: (value) => {},
-    setCreatedAt: (value) => {}
+    setCreatedAt: (value) => {},
 })
 
 const AppContextProvider = ({children}) => {
@@ -22,6 +23,7 @@ const AppContextProvider = ({children}) => {
     const [pumpIn, setPumpIn] = useState(false)
     const [pumpOut, setPumpOut] = useState(false)
     const [createdAt, setCreatedAt] = useState(new Date())
+    const [login, setLogin] = useState(false)
     const value = {
         mixer1,
         mixer2,
@@ -29,12 +31,14 @@ const AppContextProvider = ({children}) => {
         pumpIn,
         pumpOut,
         createdAt,
+        login,
         setMixer1,
         setMixer2,
         setMixer3,
         setPumpIn,
         setPumpOut,
-        setCreatedAt
+        setCreatedAt,
+        setLogin
     }
     console.log("Value: ", value)
     //Todo: Override message received
