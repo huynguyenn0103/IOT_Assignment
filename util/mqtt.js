@@ -52,29 +52,30 @@ function connect() {
     password: options.password
   });
 }
+
 function onConnect() {
-  console.log('onConnect Successfully');
+  console.log('[Connect Adafruit Log] onConnect Successfully');
   subscribeTopic();
 }
 
 function onFailure(err) {
-  console.log('Connect failed!');
+  console.log('[Connect Adafruit Log] Connect failed!');
   console.log(err);
 }
 
 function onDisconect() {
-  console.log("Disconnected from ada");
+  console.log("[Connect Adafruit Log] Disconnected from ada");
 }
 function onConnectionLost(responseObject) {
   if (responseObject.errorCode !== 0) {
-    console.log("onConnectionLost:" + responseObject.errorMessage);
+    console.log("[Connect Adafruit Log] onConnectionLost:" + responseObject.errorMessage);
   }
 }
 
 function onMessageArrived(message) {
   const arrivedTopic = message.topic.split("/")[2];
   const messageData = message.payloadString;
-  console.log("onMessageArrived, topic: " + arrivedTopic + ", payload: " +  + messageData);
+  console.log("[Connect Adafruit Log] onMessageArrived, topic: " + arrivedTopic + ", payload: " +  + messageData);
 }
 export const  PublishData = (topic, payload) => {
     const message = new Paho.MQTT.Message(payload.toString())
@@ -88,19 +89,19 @@ function subscribeTopic() {
       {
         onFailure: function (err) {
           if (err) {
-            console.log("failed connected to topic: " + topic);
+            console.log("[Connect Adafruit Log] Failed connected to topic: " + topic);
             console.log(err); ole.log(err);
           }
         },
         onSuccess: function () {
-          console.log("connected to topic: " + topic);
+          console.log("[Connect Adafruit Log] Connected to topic: " + topic);
         }
       }
     );
   }
   );
 }
-export function Disconnect() {
+export function DisconnectToAda() {
   client.disconnect();
   onDisconect();
 }

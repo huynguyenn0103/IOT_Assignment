@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-import { client } from "../util/mqtt";
+import { DisconnectToAda, client } from "../util/mqtt";
 export const AppContext = createContext({
     mixer1: false,
     mixer2: false,
@@ -14,7 +14,8 @@ export const AppContext = createContext({
     setPumpIn: (value) => {},
     setPumpOut: (value) => {},
     setCreatedAt: (value) => {},
-    setLogin: (value) => {}
+    setLogin: (value) => {},
+    setLogout: () => {}
 })
 
 const AppContextProvider = ({children}) => {
@@ -39,9 +40,13 @@ const AppContextProvider = ({children}) => {
         setPumpIn,
         setPumpOut,
         setCreatedAt,
-        setLogin
+        setLogin,
+        setLogout: () => {
+            setLogin(false);
+            DisconnectToAda();
+        }
     }
-    console.log("Value: ", value)
+    // console.log("Value: ", value)
     //Todo: Override message received
     client.onMessageArrived = (message) => {
         const arrivedTopic = message.topic.split("/")[2];

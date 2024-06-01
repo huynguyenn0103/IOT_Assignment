@@ -6,7 +6,7 @@ import { AppContext } from '../store/context';
 function UserScreen({route, navigation}) {
   const data = useContext(AppContext)
   const logout = () =>{
-    data.setLogin(false);
+    data.setLogout();
   }
   return (
     <View style={styles.rootContainer}>
@@ -20,7 +20,7 @@ function UserScreen({route, navigation}) {
       <View style={styles.wrapper}>
         <Pressable style={styles.element} onPress={logout}>
           <Ionicons name="exit-outline" color="#d81515" size={20}/>
-          <Text> Sign out </Text>
+          <Text style={{fontWeight: 'bold', marginLeft: 8}}> Sign out </Text>
         </Pressable>
       </View>
     </View>

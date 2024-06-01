@@ -96,7 +96,6 @@ const DrawNavigator = () => {
 };
 const Root = () => {
   const data = useContext(AppContext);
-  console.log("Check context", data.login);
   return (
   <NavigationContainer>
     {data.login ? (
