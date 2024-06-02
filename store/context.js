@@ -46,7 +46,6 @@ const AppContextProvider = ({children}) => {
             DisconnectToAda();
         }
     }
-    // console.log("Value: ", value)
     //Todo: Override message received
     client.onMessageArrived = (message) => {
         const arrivedTopic = message.topic.split("/")[2];

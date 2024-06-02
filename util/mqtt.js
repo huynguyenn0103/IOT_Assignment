@@ -3,7 +3,7 @@ import init from 'react_native_mqtt';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AIO_USERNAME = "hwanzar";
-const AIO_KEY = "aio_KDei648oHPmaAIJ3pDrKK1UmF8OM";
+const AIO_KEY = "";
 
 const url = "io.adafruit.com"
 init({
